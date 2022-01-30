@@ -15,10 +15,10 @@ public class MyService {
     	String someHeader = req.getHeaders().getFirst("myvar");
     	 String path = req.getURI().getRawPath();
     	 if("2".equals(someHeader)) {
-    		 ret = "http://localhost:8082";
+    		 ret = "http://webservices.oorsprong.org";
     	 }
     	 else {
-    		 ret = "http://localhost:8081";
+    		 ret = "http://webservices.oorsprong.org";
     	 }
     	
     	

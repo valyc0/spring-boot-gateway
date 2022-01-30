@@ -19,13 +19,12 @@ import org.springframework.web.server.ServerWebExchange;
 
 
 @Component
-@Order(2)
 public class ChangeDestinationUriGatewayFilterFactory extends
         AbstractChangeRequestUriGatewayFilterFactory<AbstractGatewayFilterFactory.NameConfig> {
     
 	
 	private final Logger log = LoggerFactory
-            .getLogger(RequestHeaderToRequestUriGatewayFilterFactory.class);
+            .getLogger(ChangeDestinationUriGatewayFilterFactory.class);
 
     public ChangeDestinationUriGatewayFilterFactory() {
         super(NameConfig.class);
@@ -40,6 +39,7 @@ public class ChangeDestinationUriGatewayFilterFactory extends
     protected Optional<URI> determineRequestUri(ServerWebExchange exchange,
             NameConfig config) {
         
+    	log.debug("ChangeDestinationUriGatewayFilterFactory");
         String requestUrl = determineUrl(exchange);
         return Optional.ofNullable(requestUrl).map(url -> {
             try {

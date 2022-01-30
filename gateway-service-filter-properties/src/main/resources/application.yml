@@ -8,14 +8,17 @@ spring:
       - id: employeeModule
         uri: http://localhost:8888/
         predicates:
-        - Path=/employee/**
+        - Path=/aaaaaawebsamples.countryinfo/**
         filters:
+        - ReadRequestBodyFilter
+        - LoggingFilter
         - AddRequestHeader=myvar, 1
         - RemoveRequestHeader=aaa
         - AddHeaderFilter
         - DinamicRouteFilter
         - ChangeDestinationUri
         - AddResponseHeader=first-response, first-response-header
+        
         
       - id: consumerModule
         uri: http://localhost:8082/
@@ -24,3 +27,16 @@ spring:
         filters:
         - AddRequestHeader=second-request, second-request-header
         - AddResponseHeader=second-response, second-response-header
+        
+        
+        
+      - id: myws
+        order: -1
+        uri: http://webservices.oorsprong.org/
+        predicates:
+        - Path=/websamples.countryinfoaaaaaaaaaaaaaaaaaaaaaa/**
+        filters:
+         - ChangeResponseFilter
+         - DinamicRouteFilter
+         - ChangeDestinationUri
+#        - AuthorizationFilter
